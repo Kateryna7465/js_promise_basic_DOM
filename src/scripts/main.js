@@ -16,6 +16,14 @@ promise1.then(() => {
   document.body.append(message);
 });
 
+promise1.catch(() => {
+  const message = document.createElement('div');
+
+  message.className = 'message error-message';
+  message.textContent = 'Promise was rejected!';
+  document.body.append(message);
+});
+
 const promise2 = new Promise((resolve, reject) => {
   setTimeout(() => {
     reject(new Error('Promise was rejected!'));
@@ -27,5 +35,13 @@ promise2.catch(() => {
 
   message.className = 'message error-message';
   message.textContent = 'Promise was rejected!';
+  document.body.append(message);
+});
+
+promise2.then(() => {
+  const message = document.createElement('div');
+
+  message.className = 'message';
+  message.textContent = 'Promise was resolved!';
   document.body.append(message);
 });
